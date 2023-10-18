@@ -3,24 +3,24 @@ package com.ust.controller;
 import com.ust.dto.LOBDto;
 import com.ust.entity.LOB;
 import com.ust.service.LOBService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/lob")
+@Slf4j
 public class LOBController {
 
     @Autowired
     private LOBService lobService;
 
     @PostMapping
-    public ResponseEntity<LOBDto> saveLob(LOBDto lobDto){
+    public ResponseEntity<LOBDto> saveLob(@RequestBody LOBDto lobDto){
+        log.info("{}",lobDto.toString());
         final var lob = lobService.getLob(lobDto.lobId());
         if(lob.isPresent()){
             return ResponseEntity.badRequest().build();
