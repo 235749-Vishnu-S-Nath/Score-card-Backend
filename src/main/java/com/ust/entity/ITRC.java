@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "irtcs") // change name
+@Table(name = "itrcs") // change name
 public class ITRC {
     @Id
     private long itrcId;
