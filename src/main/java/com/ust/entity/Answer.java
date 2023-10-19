@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "itrcs")
-public class ITRC {
+@Table(name = "answers")
+public class Answer {
     @Id
-    private long itrcId;
-    private String itrcName;
+    private long answerId;
+    private float mark;
     @ManyToOne
-    @JoinColumn(name = "lob_id")
-    private LOB lob;
+    @JoinColumn(name = "question_id")
+    private Question question;
 }
