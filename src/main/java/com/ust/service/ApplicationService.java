@@ -10,19 +10,18 @@ import java.util.Optional;
 
 @Service
 public class ApplicationService {
-
     @Autowired
     private ApplicationRepository applicationRepository;
+
+    public Optional<Application> getApplication(long l) {
+        return applicationRepository.findById(l);
+    }
 
     public Application saveApplication(Application application) {
         return applicationRepository.save(application);
     }
 
-    public List<Application> findAllApplication(){
+    public List<Application> getApplications() {
         return applicationRepository.findAll();
-    }
-
-    public Optional<Application> findApplication(long id){
-        return applicationRepository.findById(id);
     }
 }
